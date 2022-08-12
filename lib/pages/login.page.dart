@@ -1,4 +1,5 @@
 import 'package:barber_shop/assets/colors.dart';
+import 'package:barber_shop/pages/home.page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -50,12 +51,22 @@ class LoginPage extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.orange[600]),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      },
                       child: const Text('Entrar'),
                     ),
                   ),
                 ),
                 TextButton(
+                  style: TextButton.styleFrom(primary: Colors.orange[600]),
                   onPressed: () {},
                   child: const Text('Esqueci minha senha'),
                 ),

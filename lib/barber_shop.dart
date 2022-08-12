@@ -12,6 +12,9 @@ class BarberShop extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.orange,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.orange[600],
+        ),
       ),
       home: const LoginPage(),
     );
