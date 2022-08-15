@@ -1,3 +1,4 @@
+import 'package:barber_shop/pages/home.page.dart';
 import 'package:barber_shop/pages/login.page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class BarberShop extends StatelessWidget {
           backgroundColor: Colors.orange[600],
         ),
       ),
-      home: const LoginPage(),
+      // home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }

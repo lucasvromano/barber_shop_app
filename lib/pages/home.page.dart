@@ -1,3 +1,6 @@
+import 'package:barber_shop/components/atoms/text_atom.dart';
+import 'package:barber_shop/components/molecules/icon_text_molecule.dart';
+import 'package:barber_shop/components/organisms/item_list_organism.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,103 +10,46 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Início'),
+        title: const Text('Agendamentos'),
         automaticallyImplyLeading: false,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ],
+        // currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        // onTap: _onItemTapped,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text('teste'),
-            const Text('teste'),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Entry A')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                ],
-              ),
-            )
+        child: ListView(
+          children: const <Widget>[
+            ItemListOrganism(
+              customer: 'José Pedro da Silva',
+              services: 'Corte de cabelo e corte de barba',
+              employee: 'Cleiton da Silva',
+              dateHour: '13/09/22 - 16:55',
+              price: '50,00',
+            ),
+            ItemListOrganism(
+              customer: 'Pedro da Silva',
+              services: 'Corte de cabelo',
+              employee: 'Jorge Oliveira',
+              dateHour: '13/09/22 - 12:55',
+              price: '35,00',
+            ),
           ],
         ),
       ),
