@@ -1,4 +1,3 @@
-import 'package:barber_shop/components/organisms/item_list_organism.dart';
 import 'package:barber_shop/repositories/post.repository.dart';
 import 'package:flutter/material.dart';
 
@@ -12,23 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final List<Map<String, dynamic>> items = [
-  //   {
-  //     'customer': 'José Pedro da Silva',
-  //     'services': 'Corte de cabelo e corte de barba',
-  //     'employee': 'Cleiton da Silva',
-  //     'dateHour': '13/09/22 - 16:55',
-  //     'price': '50,00',
-  //   },
-  //   {
-  //     'customer': 'Pedro da Silva',
-  //     'services': 'Corte de cabelo',
-  //     'employee': 'Jorge Oliveira',
-  //     'dateHour': '13/09/22 - 12:55',
-  //     'price': '35,00',
-  //   }
-  // ];
-
   var requesting = false;
   late PostRepository postRepository;
   late Future<Post> post;
@@ -71,26 +53,31 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ElevatedButton(
+              child: const Text('Busca na API'),
               onPressed: () {
-                post = postRepository.fetchPost(2);
+                // post = postRepository.fetchPost(2);
+                posts = postRepository.fetchAllPosts();
                 setState(() {
                   requesting = true;
                 });
               },
-              child: const Text('Aqui'),
             ),
             if (requesting)
-              FutureBuilder<Post>(
-                future: post,
+              FutureBuilder<List<Post>>(
+                future: posts,
                 builder: (_, snapshot) {
                   if (snapshot.hasData) {
                     return Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
-                          Text('ID -> ${snapshot.data!.id}'),
-                          Text('Title -> ${snapshot.data!.title}'),
-                          Text('Body -> ${snapshot.data!.body}'),
+                          Text('ID -> ${snapshot.data![0].id}'),
+                          Text('Title -> ${snapshot.data![0].title}'),
+                          Text('Body -> ${snapshot.data![0].body}'),
+                          const Divider(color: Color(0xF7F7F7FF)),
+                          Text('ID -> ${snapshot.data![1].id}'),
+                          Text('Title -> ${snapshot.data![1].title}'),
+                          Text('Body -> ${snapshot.data![1].body}'),
                         ],
                       ),
                     );
@@ -100,24 +87,30 @@ class _HomePageState extends State<HomePage> {
                   return const CircularProgressIndicator();
                 },
               ),
+
+            // FutureBuilder<Post>(
+            //   future: post,
+            //   builder: (_, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return Padding(
+            //         padding: const EdgeInsets.all(16),
+            //         child: Column(
+            //           children: [
+            //             Text('ID -> ${snapshot.data!.id}'),
+            //             Text('Title -> ${snapshot.data!.title}'),
+            //             Text('Body -> ${snapshot.data!.body}'),
+            //           ],
+            //         ),
+            //       );
+            //     } else if (snapshot.hasError) {
+            //       return Text('${snapshot.error}');
+            //     }
+            //     return const CircularProgressIndicator();
+            //   },
+            // ),
           ],
         ),
-
-        // child: ListView.builder(
-        //   itemCount: items.length,
-        //   itemBuilder: (_, int index) {
-        //     return ItemListOrganism(
-        //       customer: items[index]['customer'],
-        //       services: items[index]['services'],
-        //       employee: items[index]['employee'],
-        //       dateHour: items[index]['dateHour'],
-        //       price: items[index]['price'],
-        //     );
-        //   },
-        // ),
       ),
     );
   }
 }
-
-class DioClient {}

@@ -18,4 +18,16 @@ class PostRepository {
       throw Exception('Failed to load post: $postId');
     }
   }
+
+  Future<List<Post>> fetchAllPosts() async {
+    try {
+      final response = await dio.get(postsEndpoint + '');
+      debugPrint(response.toString());
+      return Post.listFromJson(response.data);
+      // return Post.fromJson(response.data);
+    } on DioError catch (e) {
+      debugPrint('Status code: ${e.response?.statusCode.toString()}');
+      throw Exception('Failed to load all posts');
+    }
+  }
 }
