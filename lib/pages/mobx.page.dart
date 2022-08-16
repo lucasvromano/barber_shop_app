@@ -1,18 +1,32 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class MobxPage extends StatefulWidget {
+import '../store/counter.dart';
+
+final counter = Counter(); // Instantiate the store
+
+class MobxPage extends StatelessWidget {
   const MobxPage({Key? key}) : super(key: key);
 
   @override
-  State<MobxPage> createState() => _MobxPageState();
-}
-
-class _MobxPageState extends State<MobxPage> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(6),
-      child: const Text('Teste'),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text('You have pushed the button this mant times:'),
+          Observer(
+            builder: (_) => Text(
+              '${counter.value}',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => counter.increment(),
+            child: const Text('Incrementar'),
+          ),
+        ],
+      ),
     );
   }
 }
