@@ -1,5 +1,6 @@
 import 'package:barber_shop/pages/home.page.dart';
 import 'package:barber_shop/pages/login.page.dart';
+import 'package:barber_shop/pages/schedules.page..dart';
 import 'package:flutter/material.dart';
 
 class BarberShop extends StatelessWidget {
@@ -13,12 +14,13 @@ class BarberShop extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.orange,
+        accentColor: Colors.orange,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.orange[600],
         ),
       ),
       // home: const LoginPage(),
-      home: const HomePage(),
+      home: const SchedulesPage(),
     );
   }
 }
