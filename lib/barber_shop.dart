@@ -1,4 +1,3 @@
-import 'package:barber_shop/pages/home.page.dart';
 import 'package:barber_shop/pages/login.page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class BarberShop extends StatelessWidget {
         ),
       ),
       // home: const LoginPage(),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }
