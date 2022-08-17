@@ -1,8 +1,9 @@
 import 'package:barber_shop/components/organisms/item_list_organism.dart';
-import 'package:barber_shop/repositories/post.repository.dart';
+import 'package:barber_shop/repositories/api.repository.dart';
 import 'package:flutter/material.dart';
 
-import '../models/post.model.dart';
+import '../models/api.model.dart';
+import '../repositories/api.repository.dart';
 
 class SchedulesPage extends StatefulWidget {
   const SchedulesPage({Key? key}) : super(key: key);
@@ -30,14 +31,14 @@ class _SchedulesPageState extends State<SchedulesPage> {
   ];
 
   var requesting = false;
-  late PostRepository postRepository;
-  late Future<Post> post;
-  late Future<List<Post>> posts;
+  late ApiRepository apiRepository;
+  late Future<ApiModel> api;
+  late Future<List<ApiModel>> apis;
 
   @override
   void initState() {
     super.initState();
-    postRepository = PostRepository();
+    apiRepository = ApiRepository();
   }
 
   @override

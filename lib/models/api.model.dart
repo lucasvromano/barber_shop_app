@@ -1,18 +1,18 @@
-class Post {
+class ApiModel {
   final int userId;
   final int id;
   final String title;
   final String body;
 
-  Post({
+  ApiModel({
     required this.userId,
     required this.id,
     required this.title,
     required this.body,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
+  factory ApiModel.fromJson(Map<String, dynamic> json) {
+    return ApiModel(
       userId: json['userId'],
       id: json['id'],
       title: json['title'],
@@ -27,6 +27,6 @@ class Post {
         'body': body,
       };
 
-  static List<Post> listFromJson(List<dynamic> list) =>
-      List<Post>.from(list.map((x) => Post.fromJson(x)));
+  static List<ApiModel> listFromJson(List<dynamic> list) =>
+      List<ApiModel>.from(list.map((x) => ApiModel.fromJson(x)));
 }
