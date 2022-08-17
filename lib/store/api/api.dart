@@ -26,7 +26,6 @@ abstract class _Api with Store {
     requesting = true;
     apis = await apiRepository.fetchAllApis();
     return apis;
-    // requesting = true;
   }
 
   @action

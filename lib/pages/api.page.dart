@@ -23,104 +23,65 @@ class ApiPage extends StatelessWidget {
               child: const Text('Busca na API'),
               onPressed: () => api.getAllItems(),
             ),
-
-            if (api.requesting)
-              Observer(
-                name: 'Obserter Teste',
-                builder: (_) {
-                  return Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: api.apis.length,
-                      itemBuilder: (_, int index) {
-                        return Column(
-                          children: [
-                            Text('ID --> ${api.apis[index].id}'),
-                            Text('Title --> ${api.apis[index].title}'),
-                            Text('Body --> ${api.apis[index].body}'),
-                            Text('UserId --> ${api.apis[index].userId}'),
-                            const Divider(color: Color(0xF7F7F7FF)),
-                          ],
-                        );
-                      },
-                    ),
-                  );
-                  // return FutureBuilder<List<ApiModel>>(
-                  //   future: api.apis,
-                  //   builder: (_, snapshot) {
-                  //     if (snapshot.hasData) {
-                  //       return Expanded(
-                  //         child: Container(
-                  //           height: MediaQuery.of(context).size.height,
-                  //           padding: const EdgeInsets.all(16),
-                  //           child: ListView.builder(
-                  //             scrollDirection: Axis.vertical,
-                  //             shrinkWrap: true,
-                  //             itemCount: snapshot.data!.length,
-                  //             itemBuilder: (_, int index) {
-                  //               return Column(
-                  //                 children: [
-                  //                   Text(
-                  //                       'ID --> ${snapshot.data![index].title}'),
-                  //                   Text(
-                  //                       'Title --> ${snapshot.data![index].title}'),
-                  //                   Text(
-                  //                       'Body --> ${snapshot.data![index].body}'),
-                  //                   Text(
-                  //                       'UserId --> ${snapshot.data![index].userId}'),
-                  //                   const Divider(color: Color(0xF7F7F7FF)),
-                  //                 ],
-                  //               );
-                  //             },
-                  //           ),
-                  //         ),
-                  //       );
-                  //     } else if (snapshot.hasError) {
-                  //       return Text('${snapshot.error}');
-                  //     }
-                  //     return const CircularProgressIndicator();
-                  //   },
-                  // );
-                },
-              ),
-
-            // if (api.requesting)
-            //   FutureBuilder<List<Api>>(
-            //     future: api.apis,
-            //     builder: (_, snapshot) {
-            //       if (snapshot.hasData) {
-            //         return Expanded(
-            //           child: Container(
-            //             height: MediaQuery.of(context).size.height,
-            //             padding: const EdgeInsets.all(16),
-            //             child: ListView.builder(
-            //               scrollDirection: Axis.vertical,
-            //               shrinkWrap: true,
-            //               itemCount: snapshot.data!.length,
-            //               itemBuilder: (_, int index) {
-            //                 return Column(
-            //                   children: [
-            //                     Text('ID --> ${snapshot.data![0]}'),
-            //                     // Text(
-            //                     //     'Title --> ${snapshot.data![index].title}'),
-            //                     // Text(
-            //                     //     'Body --> ${snapshot.data![index].body}'),
-            //                     // Text(
-            //                     //     'UserId --> ${snapshot.data![index].userId}'),
-            //                     const Divider(color: Color(0xF7F7F7FF)),
-            //                   ],
-            //                 );
-            //               },
-            //             ),
-            //           ),
-            //         );
-            //       } else if (snapshot.hasError) {
-            //         return Text('${snapshot.error}');
-            //       }
-            //       return const CircularProgressIndicator();
-            //     },
-            //   ),
+            Observer(
+              name: 'Obserter Teste',
+              builder: (_) {
+                return Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: api.apis.length,
+                    itemBuilder: (_, int index) {
+                      return Column(
+                        children: [
+                          Text('ID --> ${api.apis[index].id}'),
+                          Text('Title --> ${api.apis[index].title}'),
+                          Text('Body --> ${api.apis[index].body}'),
+                          Text('UserId --> ${api.apis[index].userId}'),
+                          const Divider(color: Color(0xF7F7F7FF)),
+                        ],
+                      );
+                    },
+                  ),
+                );
+                // return FutureBuilder<List<ApiModel>>(
+                //   future: api.apis,
+                //   builder: (_, snapshot) {
+                //     if (snapshot.hasData) {
+                //       return Expanded(
+                //         child: Container(
+                //           height: MediaQuery.of(context).size.height,
+                //           padding: const EdgeInsets.all(16),
+                //           child: ListView.builder(
+                //             scrollDirection: Axis.vertical,
+                //             shrinkWrap: true,
+                //             itemCount: snapshot.data!.length,
+                //             itemBuilder: (_, int index) {
+                //               return Column(
+                //                 children: [
+                //                   Text(
+                //                       'ID --> ${snapshot.data![index].title}'),
+                //                   Text(
+                //                       'Title --> ${snapshot.data![index].title}'),
+                //                   Text(
+                //                       'Body --> ${snapshot.data![index].body}'),
+                //                   Text(
+                //                       'UserId --> ${snapshot.data![index].userId}'),
+                //                   const Divider(color: Color(0xF7F7F7FF)),
+                //                 ],
+                //               );
+                //             },
+                //           ),
+                //         ),
+                //       );
+                //     } else if (snapshot.hasError) {
+                //       return Text('${snapshot.error}');
+                //     }
+                //     return const CircularProgressIndicator();
+                //   },
+                // );
+              },
+            ),
           ],
         ),
       ),
