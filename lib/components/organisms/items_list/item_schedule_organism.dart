@@ -1,8 +1,8 @@
 import 'package:barber_shop/components/molecules/icon_text_molecule.dart';
 import 'package:flutter/material.dart';
 
-class ItemListOrganism extends StatelessWidget {
-  const ItemListOrganism({
+class ItemScheduleOrganism extends StatelessWidget {
+  const ItemScheduleOrganism({
     Key? key,
     required this.customer,
     required this.services,
@@ -61,17 +61,23 @@ class ItemListOrganism extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 0),
             child: Row(
               children: [
-                IconTextMolecule(
-                  title: dateHour,
-                  padding: const EdgeInsets.only(right: 6),
-                  fontSize: 12,
-                  icon: const Icon(Icons.watch_later, size: 16),
+                Expanded(
+                  flex: 2,
+                  child: IconTextMolecule(
+                    title: dateHour,
+                    padding: const EdgeInsets.only(right: 6),
+                    fontSize: 12,
+                    icon: const Icon(Icons.watch_later, size: 16),
+                  ),
                 ),
-                IconTextMolecule(
-                  title: price,
-                  padding: const EdgeInsets.only(left: 6),
-                  fontSize: 12,
-                  icon: const Icon(Icons.attach_money, size: 16),
+                Expanded(
+                  flex: 3,
+                  child: IconTextMolecule(
+                    title: price,
+                    padding: const EdgeInsets.only(left: 6),
+                    fontSize: 12,
+                    icon: const Icon(Icons.attach_money, size: 16),
+                  ),
                 ),
               ],
             ),

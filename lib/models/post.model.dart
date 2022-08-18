@@ -1,18 +1,18 @@
-class Post {
+class PostModel {
   final int userId;
   final int id;
   final String title;
   final String body;
 
-  Post({
+  PostModel({
     required this.userId,
     required this.id,
     required this.title,
     required this.body,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
+  factory PostModel.fromJson(Map<String, dynamic> json) {
+    return PostModel(
       userId: json['userId'],
       id: json['id'],
       title: json['title'],
@@ -27,6 +27,6 @@ class Post {
         'body': body,
       };
 
-  static List<Post> listFromJson(List<dynamic> list) =>
-      List<Post>.from(list.map((x) => Post.fromJson(x)));
+  static List<PostModel> listFromJson(List<dynamic> list) =>
+      List<PostModel>.from(list.map((item) => PostModel.fromJson(item)));
 }

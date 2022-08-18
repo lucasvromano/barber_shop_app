@@ -26,10 +26,12 @@ class IconTextMolecule extends StatelessWidget {
           padding: padding,
           child: icon,
         ),
-        TextAtom(
-          title: title,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
+        Flexible(
+          child: TextAtom(
+            title: title,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
         ),
       ],
     );
