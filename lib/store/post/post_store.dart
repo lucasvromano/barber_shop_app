@@ -10,10 +10,14 @@ abstract class _PostStore with Store {
   final apiRepository = ApiRepository();
 
   @observable
+  bool isLoading = false;
+
+  @observable
   List<PostModel> apis = [];
 
   @action
   Future<List<PostModel>> getAllItems() async {
+    isLoading = true;
     apis = await apiRepository.fetchAllApis();
     return apis;
   }

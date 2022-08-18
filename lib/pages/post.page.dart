@@ -12,36 +12,41 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ElevatedButton(
-            child: const Text('Busca na API'),
-            onPressed: () => api.getAllItems(),
-          ),
-          Observer(
-            name: 'Observer API',
-            builder: (_) {
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: api.apis.length,
-                    itemBuilder: (_, int index) {
-                      return ItemPostOrganism(
-                        id: api.apis[index].id,
-                        title: api.apis[index].title,
-                        body: api.apis[index].body,
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            ElevatedButton(
+              child: const Text('Busca na API'),
+              onPressed: () => api.getAllItems(),
+            ),
+            Observer(
+              name: 'Observer API',
+              builder: (_) {
+                return api.isLoading && api.apis.isEmpty
+                    ? const CircularProgressIndicator()
+                    : Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: api.apis.length,
+                            itemBuilder: (_, int index) {
+                              return ItemPostOrganism(
+                                id: api.apis[index].id,
+                                title: api.apis[index].title,
+                                body: api.apis[index].body,
+                              );
+                            },
+                          ),
+                        ),
                       );
-                    },
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
