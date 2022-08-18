@@ -17,9 +17,12 @@ class PostPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            ElevatedButton(
-              child: const Text('Busca na API'),
-              onPressed: () => api.getAllItems(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: ElevatedButton(
+                child: const Text('Busca na API'),
+                onPressed: () => api.getAllItems(),
+              ),
             ),
             Observer(
               name: 'Observer API',
@@ -28,7 +31,7 @@ class PostPage extends StatelessWidget {
                     ? const CircularProgressIndicator()
                     : Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
