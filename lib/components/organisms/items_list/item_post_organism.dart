@@ -1,8 +1,8 @@
 import 'package:barber_shop/components/molecules/icon_text_molecule.dart';
 import 'package:flutter/material.dart';
 
-class ItemListApiOrganism extends StatelessWidget {
-  const ItemListApiOrganism(
+class ItemPostOrganism extends StatelessWidget {
+  const ItemPostOrganism(
       {Key? key, required this.id, required this.title, required this.body})
       : super(key: key);
 

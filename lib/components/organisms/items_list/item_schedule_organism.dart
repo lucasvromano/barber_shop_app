@@ -1,8 +1,8 @@
 import 'package:barber_shop/components/molecules/icon_text_molecule.dart';
 import 'package:flutter/material.dart';
 
-class ItemListOrganism extends StatelessWidget {
-  const ItemListOrganism({
+class ItemScheduleOrganism extends StatelessWidget {
+  const ItemScheduleOrganism({
     Key? key,
     required this.customer,
     required this.services,

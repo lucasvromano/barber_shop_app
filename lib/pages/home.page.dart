@@ -1,4 +1,4 @@
-import 'package:barber_shop/pages/api.page.dart';
+import 'package:barber_shop/pages/post.page.dart';
 import 'package:barber_shop/pages/mobx.page.dart';
 import 'package:barber_shop/pages/schedules.page..dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     SchedulesPage(),
-    ApiPage(),
+    PostPage(),
     MobxPage(),
   ];
 
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Api',
+            label: 'Post',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),

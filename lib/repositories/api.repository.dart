@@ -1,29 +1,29 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../models/api.model.dart';
+import '../models/post.model.dart';
 
 class ApiRepository {
   final Dio dio = Dio();
   static const baseURL = 'https://jsonplaceholder.typicode.com';
   static const postsEndpoint = baseURL + '/posts';
 
-  Future<ApiModel> fetchApi(int postId) async {
+  Future<PostModel> fetchApi(int postId) async {
     try {
       final response = await dio.get(postsEndpoint + '/$postId');
       debugPrint(response.toString());
-      return ApiModel.fromJson(response.data);
+      return PostModel.fromJson(response.data);
     } on DioError catch (e) {
       debugPrint('Status code: ${e.response?.statusCode.toString()}');
       throw Exception('Failed to load post: $postId');
     }
   }
 
-  Future<List<ApiModel>> fetchAllApis() async {
+  Future<List<PostModel>> fetchAllApis() async {
     try {
       final response = await dio.get(postsEndpoint);
       debugPrint(response.toString());
-      return ApiModel.listFromJson(response.data);
+      return PostModel.listFromJson(response.data);
     } on DioError catch (e) {
       debugPrint('Status code: ${e.response?.statusCode.toString()}');
       throw Exception('Failed to load all posts');
