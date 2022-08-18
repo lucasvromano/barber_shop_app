@@ -62,7 +62,6 @@ class ItemScheduleOrganism extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
                   child: IconTextMolecule(
                     title: dateHour,
                     padding: const EdgeInsets.only(right: 6),
@@ -71,7 +70,6 @@ class ItemScheduleOrganism extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
                   child: IconTextMolecule(
                     title: price,
                     padding: const EdgeInsets.only(left: 6),
