@@ -1,3 +1,4 @@
+import 'package:barber_shop/components/organisms/item_list_api_organism.dart';
 import 'package:barber_shop/repositories/api.repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -14,76 +15,36 @@ class ApiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ElevatedButton(
-              child: const Text('Busca na API'),
-              onPressed: () => api.getAllItems(),
-            ),
-            Observer(
-              name: 'Obserter Teste',
-              builder: (_) {
-                return Expanded(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ElevatedButton(
+            child: const Text('Busca na API'),
+            onPressed: () => api.getAllItems(),
+          ),
+          Observer(
+            name: 'Obserter Teste',
+            builder: (_) {
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: api.apis.length,
                     itemBuilder: (_, int index) {
-                      return Column(
-                        children: [
-                          Text('ID --> ${api.apis[index].id}'),
-                          Text('Title --> ${api.apis[index].title}'),
-                          Text('Body --> ${api.apis[index].body}'),
-                          Text('UserId --> ${api.apis[index].userId}'),
-                          const Divider(color: Color(0xF7F7F7FF)),
-                        ],
+                      return ItemListApiOrganism(
+                        id: api.apis[index].id,
+                        title: api.apis[index].title,
+                        body: api.apis[index].body,
                       );
                     },
                   ),
-                );
-                // return FutureBuilder<List<ApiModel>>(
-                //   future: api.apis,
-                //   builder: (_, snapshot) {
-                //     if (snapshot.hasData) {
-                //       return Expanded(
-                //         child: Container(
-                //           height: MediaQuery.of(context).size.height,
-                //           padding: const EdgeInsets.all(16),
-                //           child: ListView.builder(
-                //             scrollDirection: Axis.vertical,
-                //             shrinkWrap: true,
-                //             itemCount: snapshot.data!.length,
-                //             itemBuilder: (_, int index) {
-                //               return Column(
-                //                 children: [
-                //                   Text(
-                //                       'ID --> ${snapshot.data![index].title}'),
-                //                   Text(
-                //                       'Title --> ${snapshot.data![index].title}'),
-                //                   Text(
-                //                       'Body --> ${snapshot.data![index].body}'),
-                //                   Text(
-                //                       'UserId --> ${snapshot.data![index].userId}'),
-                //                   const Divider(color: Color(0xF7F7F7FF)),
-                //                 ],
-                //               );
-                //             },
-                //           ),
-                //         ),
-                //       );
-                //     } else if (snapshot.hasError) {
-                //       return Text('${snapshot.error}');
-                //     }
-                //     return const CircularProgressIndicator();
-                //   },
-                // );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

@@ -28,5 +28,5 @@ class ApiModel {
       };
 
   static List<ApiModel> listFromJson(List<dynamic> list) =>
-      List<ApiModel>.from(list.map((x) => ApiModel.fromJson(x)));
+      List<ApiModel>.from(list.map((item) => ApiModel.fromJson(item)));
 }
