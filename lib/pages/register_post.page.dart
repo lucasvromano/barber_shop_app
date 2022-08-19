@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../components/atoms/text_field_atom.dart';
 import '../store/post/post_store.dart';
 
 class RegisterPostPage extends StatefulWidget {
@@ -11,7 +12,6 @@ class RegisterPostPage extends StatefulWidget {
 }
 
 class _RegisterPostPageState extends State<RegisterPostPage> {
-  // of the TextField.
   final title = TextEditingController();
   final body = TextEditingController();
   final userId = TextEditingController();
@@ -39,33 +39,27 @@ class _RegisterPostPageState extends State<RegisterPostPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: TextField(
+                child: TextFieldAtom(
                   controller: title,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Título",
-                  ),
+                  labelText: "Título",
+                  obscureText: false,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: TextField(
+                child: TextFieldAtom(
                   controller: body,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Body",
-                  ),
+                  labelText: "Body",
+                  obscureText: false,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: TextField(
+                child: TextFieldAtom(
                   controller: userId,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "User Id",
-                  ),
+                  labelText: "User ID",
+                  obscureText: false,
                 ),
               ),
               Padding(
@@ -83,7 +77,6 @@ class _RegisterPostPageState extends State<RegisterPostPage> {
                                 body.text,
                                 userId.text,
                               );
-
                               Navigator.pop(context);
                             },
                           );
