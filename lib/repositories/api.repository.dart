@@ -29,4 +29,22 @@ class ApiRepository {
       throw Exception('Failed to load all posts');
     }
   }
+
+  Future<dynamic> fetchPostApi(String title, String body, String userId) async {
+    try {
+      final response = await dio.post(
+        postsEndpoint,
+        data: {
+          'title': title,
+          'body': body,
+          'userId': userId,
+        },
+      );
+      debugPrint(response.data.toString());
+      return response.data;
+    } on DioError catch (e) {
+      debugPrint('Status code: ${e.response?.statusCode}');
+      throw Exception('Failed to load all posts');
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:barber_shop/assets/colors.dart';
+import 'package:barber_shop/components/atoms/text_field_atom.dart';
 import 'package:barber_shop/pages/home.page.dart';
 import 'package:flutter/material.dart';
 
@@ -29,21 +30,16 @@ class LoginPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: userName,
-                    ),
+                  child: TextFieldAtom(
+                    labelText: userName,
+                    obscureText: false,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16),
-                  child: TextField(
+                  child: TextFieldAtom(
+                    labelText: password,
                     obscureText: true,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: password,
-                    ),
                   ),
                 ),
                 Padding(

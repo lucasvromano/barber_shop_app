@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../components/organisms/items_list/item_post_organism.dart';
 
-final api = PostStore();
+final postStore = PostStore();
 
 class PostPage extends StatelessWidget {
   const PostPage({Key? key}) : super(key: key);
@@ -21,13 +21,13 @@ class PostPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: ElevatedButton(
                 child: const Text('Busca na API'),
-                onPressed: () => api.getAllItems(),
+                onPressed: () => postStore.getAllItems(),
               ),
             ),
             Observer(
-              name: 'Observer API',
+              name: 'List Posts',
               builder: (_) {
-                return api.isLoading && api.apis.isEmpty
+                return postStore.isLoading && postStore.posts.isEmpty
                     ? const CircularProgressIndicator()
                     : Expanded(
                         child: Padding(
@@ -35,12 +35,12 @@ class PostPage extends StatelessWidget {
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: api.apis.length,
+                            itemCount: postStore.posts.length,
                             itemBuilder: (_, int index) {
                               return ItemPostOrganism(
-                                id: api.apis[index].id,
-                                title: api.apis[index].title,
-                                body: api.apis[index].body,
+                                id: postStore.posts[index].id,
+                                title: postStore.posts[index].title,
+                                body: postStore.posts[index].body,
                               );
                             },
                           ),
