@@ -13,12 +13,22 @@ abstract class _PostStore with Store {
   bool isLoading = false;
 
   @observable
-  List<PostModel> apis = [];
+  List<PostModel> posts = [];
+
+  @observable
+  dynamic post;
 
   @action
   Future<List<PostModel>> getAllItems() async {
     isLoading = true;
-    apis = await apiRepository.fetchAllApis();
-    return apis;
+    posts = await apiRepository.fetchAllApis();
+    return posts;
+  }
+
+  @action
+  Future<dynamic> registerPost(title, body, userId) async {
+    isLoading = true;
+    post = await apiRepository.fetchPostApi(title, body, userId);
+    return post;
   }
 }

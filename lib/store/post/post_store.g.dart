@@ -25,18 +25,33 @@ mixin _$PostStore on _PostStore, Store {
     });
   }
 
-  late final _$apisAtom = Atom(name: '_PostStore.apis', context: context);
+  late final _$postsAtom = Atom(name: '_PostStore.posts', context: context);
 
   @override
-  List<PostModel> get apis {
-    _$apisAtom.reportRead();
-    return super.apis;
+  List<PostModel> get posts {
+    _$postsAtom.reportRead();
+    return super.posts;
   }
 
   @override
-  set apis(List<PostModel> value) {
-    _$apisAtom.reportWrite(value, super.apis, () {
-      super.apis = value;
+  set posts(List<PostModel> value) {
+    _$postsAtom.reportWrite(value, super.posts, () {
+      super.posts = value;
+    });
+  }
+
+  late final _$postAtom = Atom(name: '_PostStore.post', context: context);
+
+  @override
+  dynamic get post {
+    _$postAtom.reportRead();
+    return super.post;
+  }
+
+  @override
+  set post(dynamic value) {
+    _$postAtom.reportWrite(value, super.post, () {
+      super.post = value;
     });
   }
 
@@ -48,11 +63,21 @@ mixin _$PostStore on _PostStore, Store {
     return _$getAllItemsAsyncAction.run(() => super.getAllItems());
   }
 
+  late final _$registerPostAsyncAction =
+      AsyncAction('_PostStore.registerPost', context: context);
+
+  @override
+  Future<dynamic> registerPost(dynamic title, dynamic body, dynamic userId) {
+    return _$registerPostAsyncAction
+        .run(() => super.registerPost(title, body, userId));
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-apis: ${apis}
+posts: ${posts},
+post: ${post}
     ''';
   }
 }

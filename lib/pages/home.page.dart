@@ -1,5 +1,6 @@
 import 'package:barber_shop/pages/post.page.dart';
 import 'package:barber_shop/pages/mobx.page.dart';
+import 'package:barber_shop/pages/register_post.page.dart';
 import 'package:barber_shop/pages/schedules.page..dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,23 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home'),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RegisterPostPage(),
+                ),
+              );
+              // do something
+            },
+          )
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
