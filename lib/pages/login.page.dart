@@ -23,9 +23,8 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 16),
                   child: CircleAvatar(
                     radius: 110,
-                    backgroundImage: NetworkImage(
-                      'https://img.elo7.com.br/product/zoom/27CB3CE/adesivo-the-barber-shop-asb33-salao.jpg',
-                    ),
+                    backgroundImage:
+                        AssetImage('lib/assets/icon/ic_launcher.png'),
                   ),
                 ),
                 Padding(
