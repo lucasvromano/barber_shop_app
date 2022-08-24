@@ -19,8 +19,6 @@ class _RegisterPostPageState extends State<RegisterPostPage> {
   final postStore = PostStore();
 
   registerPost(context) {
-    final modal = ModalTeste();
-
     if (!postStore.isLoading) {
       return ElevatedButton(
         child: const Text('Cadastrar'),
@@ -32,46 +30,42 @@ class _RegisterPostPageState extends State<RegisterPostPage> {
               userId.text,
             );
 
-            modal.setTitle('Cadastro realizado com sucesso!');
-            modal.setImagePath('lib/assets/icon/ic-ok.png');
-            modal.setDescription(
-                'Seu cadastro foi realizado com sucesso! Você deseja pernanecer nesta tela ou voltar para a anterior?');
-            modal.setActions(
-              [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Permanecer'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    '/home',
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => ModalResponseMolecule(
+                title: 'Cadastro realizado com sucesso!',
+                imagePath: 'lib/assets/icon/ic-ok.png',
+                description:
+                    'Seu cadastro foi realizado com sucesso! Você deseja pernanecer nesta tela ou voltar para a anterior?',
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Permanecer'),
                   ),
-                  child: const Text('Voltar'),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      '/home',
+                    ),
+                    child: const Text('Voltar'),
+                  ),
+                ],
+              ),
             );
-
+          } catch (err) {
             showDialog<String>(
               context: context,
-              builder: (BuildContext context) => modal.buildModal(),
-            );
-          } catch (e) {
-            var modal = ModalTeste();
-            modal.setTitle('Algo deu errado!');
-            modal.setImagePath('lib/assets/icon/ic-cancel.png');
-            modal.setDescription('Erro: $e');
-            modal.setActions(
-              [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Fechar'),
-                ),
-              ],
-            );
-            showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => modal.buildModal(),
+              builder: (BuildContext context) => ModalResponseMolecule(
+                title: 'Algo deu errado!',
+                imagePath: 'lib/assets/icon/ic-cancel.png',
+                description: 'Erro $err',
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Fechar'),
+                  ),
+                ],
+              ),
             );
           }
           postStore.isLoading = false;
@@ -137,36 +131,6 @@ class _RegisterPostPageState extends State<RegisterPostPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ModalTeste {
-  String title = '';
-  String imagePath = '';
-  String description = '';
-  List<Widget> actions = [];
-
-  Object teste = {"teste": ""};
-
-  get getTitle => title;
-  void setTitle(String _title) => title = _title;
-
-  get getImagePath => imagePath;
-  void setImagePath(String _imagePath) => imagePath = _imagePath;
-
-  get getDescription => description;
-  void setDescription(String _description) => description = _description;
-
-  get getActions => actions;
-  void setActions(List<Widget> _actions) => actions = _actions;
-
-  Widget buildModal() {
-    return ModalResponseMolecule(
-      title: title,
-      imagePath: imagePath,
-      description: description,
-      actions: actions,
     );
   }
 }
